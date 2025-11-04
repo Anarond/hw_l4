@@ -9,16 +9,28 @@ email5 = {
 }
 
 # 2. Добавьте дату отправки: создайте переменную send_date как текущую дату в формате YYYY-MM-DD и запишите её в email["date"].
-send_date = datetime.datetime.now().strftime("%Y/%m/%d")
+send_date = datetime.datetime.now().strftime("%Y-%m-%d")
 email5["date"] = send_date
+print(email5["date"])
 
 # 3. Нормализуйте e-mail адреса отправителя и получателя: приведите к нижнему регистру и уберите пробелы по краям.
 # Запишите обратно в email["from"] и email["to"].
+email5["from"] = email5["from"].strip().lower()
+email5["to"] = email5["to"].strip().lower()
+print(email5["from"])
+print(email5["to"])
 
 # 4. Извлеките логин и домен отправителя в две переменные login и domain.
+login = email5["from"].split("@")[0]
+domain = email5["from"].split("@")[1]
+print(login)
+print(domain)
 
 # 5. Создайте сокращённую версию текста: возьмите первые 10 символов email["body"] и добавьте многоточие "...".
 # Сохраните в новый ключ словаря: email["short_body"].
+short_body = email5["body"][:10] + "..."
+email5["short_body"] = short_body
+print(email5["short_body"])
 
 # 6. Списки доменов: создайте список личных доменов
 # ['gmail.com','list.ru', 'yahoo.com','outlook.com','hotmail.com','icloud.com','yandex.ru','mail.ru','list.ru','bk.ru','inbox.ru']
