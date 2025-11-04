@@ -28,6 +28,9 @@ print(domain)
 
 # 5. Создайте сокращённую версию текста: возьмите первые 10 символов email["body"] и добавьте многоточие "...".
 # Сохраните в новый ключ словаря: email["short_body"].
+short_body = email5["body"][:10] + "..."
+email5["short_body"] = short_body
+print(email5["short_body"])
 
 # 6. Списки доменов: создайте список личных доменов
 # ['gmail.com','list.ru', 'yahoo.com','outlook.com','hotmail.com','icloud.com','yandex.ru','mail.ru','list.ru','bk.ru','inbox.ru']
