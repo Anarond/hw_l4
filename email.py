@@ -36,13 +36,45 @@ print(email5["short_body"])
 # ['gmail.com','list.ru', 'yahoo.com','outlook.com','hotmail.com','icloud.com','yandex.ru','mail.ru','list.ru','bk.ru','inbox.ru']
 # и список корпоративных доменов
 # ['company.ru','corporation.com','university.edu','organization.org','company.ru', 'business.net']. с учетом того что там должны быть только уникальные значение
+personal_domains = [
+    "gmail.com",
+    "list.ru",
+    "yahoo.com",
+    "outlook.com",
+    "hotmail.com",
+    "icloud.com",
+    "yandex.ru",
+    "mail.ru",
+    "list.ru",
+    "bk.ru",
+    "inbox.ru",
+]
+corporate_domains = [
+    "company.ru",
+    "corporation.com",
+    "university.edu",
+    "organization.org",
+    "company.ru",
+    "business.net",
+]
+print(personal_domains)
+print(corporate_domains)
 
 # 7. Проверьте что в списке личных и корпоративных доменов нет пересечений: ни один домен не должен входить в оба списка одновременно.
+personal_domains = set(personal_domains)
+corporate_domains = set(corporate_domains)
+print(personal_domains)
+print(corporate_domains)
 
 # 8. Проверьте «корпоративность» отправителя: создайте булеву переменную is_corporate, равную результату проверки вхождения домена отправителя в список корпоративных доменов.
+is_corporate = domain in corporate_domains
+print(is_corporate)
 
 # 9. Соберите «чистый» текст сообщения без табов и переводов строк: замените "\t" и "\n" на пробел.
 # Сохраните в email["clean_body"].
+clean_body = email5["body"].replace("\t", " ").replace("\n", " ")
+email5["clean_body"] = clean_body
+print(email5["clean_body"])
 
 # 10. Сформируйте текст отправленного письма многострочной f-строкой и сохраните в email["sent_text"]:
 # Кому: {получатель}, от {отправитель} Тема: {тема письма}, дата {дата} {чистый текст сообщения}
@@ -56,3 +88,8 @@ print(email5["short_body"])
 # Запишите в email["masked_from"].
 
 # 14. Удалите из списка личных доменов значения "list.ru" и "bk.ru".
+
+#В конце файла сделайте print(...) ключевых результатов для быстрой проверки, например:
+#print(email) и print(is_corporate, pages, is_subject_empty, is_body_empty)
+print(email5)
+print(is_corporate, pages, is_subject_empty, is_body_empty)
