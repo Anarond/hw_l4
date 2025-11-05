@@ -78,18 +78,34 @@ print(email5["clean_body"])
 
 # 10. Сформируйте текст отправленного письма многострочной f-строкой и сохраните в email["sent_text"]:
 # Кому: {получатель}, от {отправитель} Тема: {тема письма}, дата {дата} {чистый текст сообщения}
+sent_text = (
+    f"Кому: {email5['to']}, от {email5['from']}\n"
+    f"Тема: {email5['subject']}, дата {email5['date']} {email5['clean_body']}"
+)
+print(sent_text)
 
 # 11. Рассчитайте количество страниц печати для email["sent_text"], если на 1 страницу помещается 500 символов.
 # Сохраните результат в переменную pages. Значение должно быть округленно в большую сторону.
+pages = (len(sent_text) + 499) // 500
+print(pages)
 
 # 12. Проверьте пустоту темы и тела письма: создайте переменные is_subject_empty, is_body_empty в котором будет хранится что тема письма содержит данные.
+is_subject_empty = email5["subject"] == ""
+is_body_empty = email5["body"] == ""
+print(is_subject_empty)
+print(is_body_empty)
 
 # 13. Создайте «маску» e-mail отправителя: первые 2 символа логина + "***@" + домен.
 # Запишите в email["masked_from"].
+masked_from = login[:2] + "***@" + domain
+print(masked_from)
 
 # 14. Удалите из списка личных доменов значения "list.ru" и "bk.ru".
+personal_domains.remove("list.ru")
+personal_domains.remove("bk.ru")
+print(personal_domains)
 
-#В конце файла сделайте print(...) ключевых результатов для быстрой проверки, например:
-#print(email) и print(is_corporate, pages, is_subject_empty, is_body_empty)
+# В конце файла сделайте print(...) ключевых результатов для быстрой проверки, например:
+# print(email) и print(is_corporate, pages, is_subject_empty, is_body_empty)
 print(email5)
 print(is_corporate, pages, is_subject_empty, is_body_empty)
