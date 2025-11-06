@@ -43,6 +43,8 @@ personal_domains = [
     "bk.ru",
     "inbox.ru",
 ]
+unique_personal_domains = list(set(personal_domains))
+
 corporate_domains = [
     "company.ru",
     "corporation.com",
@@ -51,10 +53,15 @@ corporate_domains = [
     "company.ru",
     "business.net",
 ]
+unique_corporate_domains = list(set(corporate_domains))
 
 # 7. Проверьте что в списке личных и корпоративных доменов нет пересечений: ни один домен не должен входить в оба списка одновременно.
-personal_domains = set(personal_domains)
-corporate_domains = set(corporate_domains)
+intersection = set(personal_domains) & set(corporate_domains)
+if not intersection:
+    print("Пересечений нет")
+
+else:
+    print("Пересения есть")
 
 # 8. Проверьте «корпоративность» отправителя: создайте булеву переменную is_corporate, равную результату проверки вхождения домена отправителя в список корпоративных доменов.
 is_corporate = domain in corporate_domains
@@ -76,8 +83,8 @@ sent_text = (
 pages = (len(sent_text) + 499) // 500
 
 # 12. Проверьте пустоту темы и тела письма: создайте переменные is_subject_empty, is_body_empty в котором будет хранится что тема письма содержит данные.
-is_subject_empty = email5["subject"] == ""
-is_body_empty = email5["body"] == ""
+is_subject_empty = not email5["subject"].strip()
+is_body_empty = not email5["body"].strip()
 
 # 13. Создайте «маску» e-mail отправителя: первые 2 символа логина + "***@" + домен.
 # Запишите в email["masked_from"].
